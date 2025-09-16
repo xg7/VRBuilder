@@ -1,0 +1,305 @@
+
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+    margin: 0;
+}
+
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+    text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/*
+9. Create a root stacking context
+*/
+#root,
+#__next {
+    isolation: isolate;
+}
+
+
+#game-ui {
+    width: 1280px;
+    height: 720px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: top left;
+    background: url(village.png) no-repeat center / cover;
+    background-color: rgba(70, 70, 70, 0.486);
+    background-blend-mode: overlay;
+    overflow: hidden;
+}
+
+
+
+
+.cloud {
+    position: absolute;
+    pointer-events: none;
+    will-change: transform;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.cloud1 {
+    top: 10px;
+    width: 400px;
+    height: auto;
+    animation: float 30s linear infinite;
+}
+
+.cloud2 {
+    top: 250px;
+    width: 250px;
+    height: auto;
+    animation: float 30s linear infinite;
+    animation-delay: -5s;
+}
+
+.cloud3 {
+    top: 400px;
+    width: 300px;
+    height: auto;
+    animation: float 25s linear infinite;
+    animation-delay: -10s;
+}
+
+.cloud4 {
+    top: 300px;
+    width: 800px;
+    height: auto;
+    animation: float 20s linear infinite;
+    animation-delay: -3s;
+    opacity: 0.3;
+}
+
+
+
+.herocard {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% - 8px);
+    border-radius: 5px;
+    margin: 4px;
+}
+
+.herocard span {
+    color: #428018;
+}
+
+.heroselected {
+    background-color: rgb(157, 157, 157);
+    --mask: radial-gradient(6px at 6px 6px, #0000 98%, #000) -6px -6px;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+    background: rgb(102, 87, 61);
+    background: linear-gradient(90deg, rgba(102, 87, 61, 1) 0%, rgba(54, 58, 63, 1) 100%);
+    outline: 1px solid rgb(118, 112, 106, 0.8);
+    outline-offset: -7px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.herolist {
+    background: #c0c6c7;
+    outline: 1px solid #b8bcc0;
+    outline-offset: -5px;
+    color: #444444;
+}
+
+.herolist .heroimg:hover {
+    transition: all 0.1s ease;
+    scale: 1.02;
+    cursor: pointer;
+}
+
+.heroselected h4 {
+    padding-top: 0px;
+    padding-left: 0px;
+    font-size: 12px;
+    color: #d3b85b;
+}
+
+.heroselected h3 {
+    font-size: 14px;
+}
+
+.heroimg {
+    display: flex;
+    flex: 1 1 20%;
+    min-width: 20%;
+    flex-direction: column;
+    justify-content: start;
+    padding-top: 6px;
+    padding-bottom: 14px;
+    padding-left: 12px;
+    position: relative;
+    /* Prevent vertical stretching */
+}
+
+.heroimg-img img {
+    width: 100%;
+    max-width: 60px;
+}
+
+.heroimg-img:hover {
+    transition: all 0.1s ease;
+    scale: 1.02;
+    cursor: pointer;
+}
+
+.heroinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 1 1 80%;
+    max-width: 80%;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 10px;
+    /* Grow, shrink, basis of 80% */
+    min-width: 80%;
+    /* Ensure it doesn't shrink below 80% */
+}
+
+
+.heroattributes {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+    justify-content: start;
+}
+
+.skills {
+    width: 22%;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 2px;
+    gap: 2px;
+    /* Allow slots to wrap if needed */
+    background-color: rgb(47, 47, 47, 0.4);
+}
+
+.skills .slot {
+    width: 50%;
+    position: relative;
+    /* Needed for child content */
+}
+
+.heroequipment {
+    display: flex;
+    width: 45%;
+    flex-wrap: wrap;
+    /* Allow slots to wrap if needed */
+    background-color: rgb(47, 47, 47, 0.4);
+    padding: 2px;
+}
+
+.heroequipment .slot {
+    width: calc(25% - 4px);
+    position: relative;
+    margin-left: 2px;
+    margin-right: 2px;
+    /* Needed for child content */
+}
+
+.heroequipment .slot .slotequipment {
+    border-radius: 50%;
+    overflow: hidden;
+    background-image: url(Images/Equipment/Legendary.png);
+    background-position: center;
+    background-size: 110%;
+    width: 100%;
+    height: auto;
+    /* Needed for child content */
+}
+
+.slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 3/3;
+    position: relative;
+}
+
+.slotequipment:hover {
+    scale: 1.05;
+}
+
+.remove {
+    position: absolute;
+    top: -3px;
+    right: -2px;
+    width: 12px;
+    height: auto;
+    z-index: 1;
+}
+
+.remove:hover {
+    scale: 1.1;
+}
+
+.heroimg .remove{
+    top:8px;
+    right: -6px;
+}
+
+
+@keyframes float {
+    0% {
+        left: -300px;
+    }
+
+    100% {
+        left: 1280px;
+    }
+}

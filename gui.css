@@ -1,0 +1,74 @@
+.buttona{
+    --buttonheight: 24px;
+    height: var(--buttonheight);
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    opacity: 0.8;
+    scale: 1;
+}
+.buttona:hover{
+    opacity: 1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    scale: 1.02;
+}
+
+
+.buttona-side-left{
+    background-position: left;
+    height: var(--buttonheight);
+    width: 20px;
+    background-size: auto 100%;
+}
+.buttona-side-right{
+    background-position: right;
+    height: var(--buttonheight);
+    width: 20px;
+    background-size: auto 100%;
+}
+.buttona-center{
+    height: var(--buttonheight);
+    background-position: -100px;
+    background-size: 800px 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-items: center;
+    justify-content: center;
+    color: #fff;
+    line-height: var(--buttonheight);
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: -4px;
+    margin-right: -4px;
+}
+
+.buttona-center p{
+    color: #fff;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin: 0px;
+    word-wrap: break-word;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+}
+.green{
+background-image: url(buttongreen.png);
+}
+.red{
+background-image: url(buttonred.png);
+}
+.gold{
+background-image: url(buttongold.png);
+}
+.blue{
+background-image: url(button.png);
+}
+
+.grey{
+    background-image: url(buttongrey.png);
+    }

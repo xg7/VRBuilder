@@ -1,0 +1,121 @@
+.infoDiv {
+    background-color: #e3e8e8;
+    position: absolute;
+    width: 300px;
+    max-height: 300px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    -webkit-user-drag: auto;
+    /* Start with 0 opacity */
+    transition: opacity 0.8s ease;
+    transition: scale 0.3s ease;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    /* Add the ability to scroll */
+}
+
+.infoDiv:hover {
+    scale: 1.01;
+}
+
+.infoDiv::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.infoDiv {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.infoDiv h4 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 6px;
+    margin: 0px;
+    color: #ebf1fa;
+    font-size: 14px;
+
+}
+
+.infoDiv-legendary {
+    background-color: #b26d00;
+}
+
+.infoDiv-uncommon {
+    background-color: #008058;
+}
+
+.infoDiv-rare {
+    background-color: #1c79bb;
+}
+
+.infoDiv-epic{
+    background-color: #a24dde;
+}
+
+.infoDiv-common {
+    background-color: #323232;
+}
+
+.infoDiv h5 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 6px;
+    margin: 0px;
+    background-color: #4a86b8;
+    color: #e1e6e6;
+    font-size: 14px;
+
+}
+
+.infotype {
+    background-color: #bdcde1;
+    padding: 3px;
+    margin: 0px;
+    margin-left: 4px;
+    margin-right: 4px;
+    color: #323232;
+    font-size: 12px;
+}
+
+.infoprobability {
+    background-color: #d3dce5;
+    padding: 3px;
+    margin: 0px;
+    margin-left: 4px;
+    margin-right: 4px;
+    color: #323232;
+    font-size: 12px;
+}
+
+.infop {
+    padding: 5px;
+    font-size: 12px;
+    margin: 0px;
+    background-color: #e3e8e8;
+    font-size: 12px;
+    margin-left: 4px;
+    margin-right: 4px;
+    color: #4d4f4f;
+}
+
+.infoDiv div {
+    border-bottom: 0px solid #8e9ba0;
+}
+
+.infoDiv span {
+    color: #008058;
+    float: inline-end;
+  }
+
+  .infoDiv .element-icon {
+    width: 18px;
+    display: inline-block;
+    padding: 0px;
+    vertical-align: middle;
+    margin-right: 3px;
+  }

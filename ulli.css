@@ -1,0 +1,579 @@
+
+
+#HeroesAndSkills ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0px;
+}
+
+#HeroesAndSkills li {
+    padding: 0px;
+    margin: 0px;
+}
+
+#HeroesAndSkills input[type="checkbox"] {
+    display: none;
+    /* Hide the actual checkbox */
+}
+
+#HeroesAndSkills input[type="checkbox"]+label {
+    display: block;
+    padding: 0px;
+    cursor: pointer;
+    height: 45px;
+    line-height: 45px;
+    text-indent: 40px;
+    background-image: url(unchecked.png);
+    background-size: 20px 20px;
+    background-position: 12px center;
+    background-repeat: no-repeat;
+    color: rgb(68, 68, 68);
+}
+
+#HeroesAndSkills input[type="checkbox"]:checked+label {
+    background-color: #1e5785;
+    color: #e1e6e6;
+    /* Light green background when checked */
+    background-image: url(checked.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 12px center;
+    background-repeat: no-repeat;
+}
+
+#HeroesAndSkills input[type="checkbox"]:checked+label~* {
+    background-color: #a1abab;
+    /* Light green background for the entire li */
+
+
+}
+
+#Equipment ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0px;
+}
+
+#Equipment li {
+    padding: 0px;
+    margin: 0px;
+    opacity: 1;
+    height: 60px;
+
+}
+
+#Equipment input[type="radio"] {
+    display: none;
+    /* Hide the actual radio */
+}
+
+#Equipment input[type="radio"]+label {
+    display: block;
+    padding: 0px;
+    cursor: pointer;
+    height: 60px;
+    line-height: 60px;
+    text-indent: 40px;
+    background-size: auto 30px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    background-color: #a1abab00;
+    color: rgb(68, 68, 68);
+}
+#Equipment input[type="radio"]:checked+label {
+    background-color: #1e5785;
+    color: #e1e6e6;
+    background-repeat: no-repeat;
+    background-size: auto 30px;
+    background-position: 10px center;
+    background-repeat: no-repeat;    
+}
+#Equipment input[type="radio"]+label.all {
+    background-image: url(Images/Gui/allequipmentgrey.png);
+}
+
+#Equipment input[type="radio"]:checked+label.all {
+    background-image: url(Images/Gui/allequipmentwhite.png);
+}
+
+#Equipment input[type="radio"]+label.basic {
+    background-image: url(Images/Gui/basicequipmentgrey.png);
+}
+
+#Equipment input[type="radio"]:checked+label.basic {
+    background-image: url(Images/Gui/basicequipmentwhite.png);
+}
+
+#Equipment input[type="radio"]+label.monster {
+    background-image: url(Images/Gui/monsterequipmentgrey.png);
+}
+
+#Equipment input[type="radio"]:checked+label.monster {
+    background-image: url(Images/Gui/monsterequipmentwhite.png);
+}
+
+#Equipment input[type="radio"]+label.blessed {
+    background-image: url(Images/Gui/blessedequipmentgrey.png);
+}
+
+#Equipment input[type="radio"]:checked+label.blessed {
+    background-image: url(Images/Gui/blessedequipmentwhite.png);
+}
+
+#Equipment input[type="radio"]:checked+label~* {
+    background-color: #a1abab;
+    /* Light green background for the entire li */
+
+
+}
+
+.ulheader{
+    margin-top: 5px;
+    width: 100%;
+    background-color: #bcc3c4;
+    color: #373838;
+    text-align: center;
+    padding: 2px;
+}
+
+.ulheader > * {
+    width: 100%;
+    border-bottom: 1px solid #5d5d5d;
+    border-top: 1px solid #767676;
+    height: 26px;
+    line-height: 26px;
+
+}
+
+.uldiv {
+    width: 100%;
+    background-color: #9ba2a300;
+    padding: 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.uldiv p {
+    width: 100%;
+    background-color: #1e57858b;
+    color: #3d6089;
+    font-weight: bold;
+    padding: 0px;
+    text-align: center;
+    background: rgb(102,87,61);
+background: linear-gradient(90deg, rgba(102,87,61,0) 0%, rgba(182,196,206,1) 50%, rgba(207,214,219,0) 100%);
+}
+
+#Equipment .grade ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100px;
+}
+
+#Equipment li.grade {
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+    width: 19%;
+}
+
+#Equipment input[type="radio"] {
+    display: none;
+    /* Hide the actual radio */
+}
+
+#Equipment .grade input[type="radio"]+label {
+    display: block;
+    float: left;
+    padding: 0px;
+    cursor: pointer;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    line-height: 60px;
+    text-indent: 40px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #61616100;
+    opacity: 0.6;
+    color: rgb(68, 68, 68);
+}
+#Equipment .grade input[type="radio"]:checked+label {
+    background-color: #1e578500;
+    color: #e1e6e6;
+    /* Light green background when checked */
+    
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 1;
+}
+#Equipment .grade input[type="radio"]+label.common {
+    background-image: url(Images/Gui/common.png);
+}
+
+#Equipment .grade input[type="radio"]:checked+label.common {
+    background-image: url(Images/Gui/commonactive.png);
+}
+
+#Equipment .grade input[type="radio"]+label.uncommon {
+    background-image: url(Images/Gui/uncommon.png);
+}
+
+#Equipment .grade input[type="radio"]:checked+label.uncommon {
+    background-image: url(Images/Gui/uncommonactive.png);
+}
+
+#Equipment .grade input[type="radio"]+label.rare {
+    background-image: url(Images/Gui/rare.png);
+}
+
+#Equipment .grade input[type="radio"]:checked+label.rare {
+    background-image: url(Images/Gui/rareactive.png);
+}
+
+#Equipment input[type="radio"]+label.epic {
+    background-image: url(Images/Gui/epic.png);
+}
+
+#Equipment input[type="radio"]:checked+label.epic {
+    background-image: url(Images/Gui/epicactive.png);
+}
+
+#Equipment input[type="radio"]+label.legendary {
+    background-image: url(Images/Gui/legendary.png);
+}
+
+#Equipment input[type="radio"]:checked+label.legendary {
+    background-image: url(Images/Gui/legendaryactive.png);
+}
+
+#Equipment input[type="radio"]:checked+label~* {
+    background-color: #a1abab00;
+    /* Light green background for the entire li */
+
+
+}
+
+#Equipment .weaponslot ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100px;
+}
+
+#Equipment li.weaponslot {
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+    width: 19%;
+}
+
+#Equipment .weaponslot input[type="radio"]+label {
+    display: block;
+    float: left;
+    padding: 0px;
+    cursor: pointer;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    line-height: 60px;
+    text-indent: 40px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #61616100;
+    opacity: 0.6;
+    color: rgb(68, 68, 68);
+}
+#Equipment .weaponslot input[type="radio"]:checked+label {
+    background-color: #1e578500;
+    color: #e1e6e6;
+    /* Light green background when checked */
+    
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 1;
+}
+#Equipment .weaponslot input[type="radio"]+label.weaponall {
+    background-image: url(Images/Gui/selectequipmentall.png);
+}
+
+#Equipment .weaponslot input[type="radio"]:checked+label.weaponall {
+    background-image: url(Images/Gui/selectequipmentallactive.png);
+}
+
+#Equipment .weaponslot input[type="radio"]+label.weapon {
+    background-image: url(Images/Gui/selectequipmentweapon.png);
+}
+
+#Equipment .weaponslot input[type="radio"]:checked+label.weapon {
+    background-image: url(Images/Gui/selectequipmentweaponactive.png);
+}
+
+#Equipment .weaponslot input[type="radio"]+label.headgear {
+    background-image: url(Images/Gui/selectequipmentheadgear.png);
+}
+
+#Equipment .weaponslot input[type="radio"]:checked+label.headgear {
+    background-image: url(Images/Gui/selectequipmentheadgearactive.png);
+}
+
+#Equipment input[type="radio"]+label.top {
+    background-image: url(Images/Gui/selectequipmenttop.png);
+}
+
+#Equipment input[type="radio"]:checked+label.top {
+    background-image: url(Images/Gui/selectequipmenttopactive.png);
+}
+
+#Equipment input[type="radio"]+label.bottom {
+    background-image: url(Images/Gui/selectequipmentbottom.png);
+}
+
+#Equipment input[type="radio"]:checked+label.bottom {
+    background-image: url(Images/Gui/selectequipmentbottomactive.png);
+}
+
+#Equipment input[type="radio"]:checked+label~* {
+    background-color: #a1abab;
+    /* Light green background for the entire li */
+
+
+}
+
+#Equipment #equipmentul ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0px;
+}
+
+#Equipment #equipmentul li {
+    padding: 0px;
+    border-bottom: 1px solid rgb(50, 50, 50, 0.2);
+    opacity: 0.75;
+    font-size: 12px;
+    height: 28px;
+
+}
+
+#Equipment #equipmentul input[type="checkbox"] {
+    display: none;
+    /* Hide the actual checkbox */
+}
+
+#Equipment #equipmentul input[type="checkbox"]+label {
+    display: block;
+    cursor: pointer;
+    height: 28px;
+    line-height: 28px;
+    text-indent: 30px;
+    background-image: url(unchecked.png);
+    background-size: 15px 15px;
+    background-position: 8px center;
+    background-repeat: no-repeat;
+    color: rgb(68, 68, 68);
+    margin-bottom: 20px;
+}
+
+#Equipment #equipmentul input[type="checkbox"]:checked+label {
+    background-color: #2a6a9f00;
+    color: rgb(55, 107, 145);
+    /* Light green background when checked */
+    background-image: url(checked.png);
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position: 8px center;
+    background-repeat: no-repeat;
+}
+
+#Equipment #equipmentul input[type="checkbox"]:checked+label~* {
+    background-color: #a1abab00;
+    /* Light green background for the entire li */
+
+
+}
+#equipmentul {
+    width: 100%;
+    background-color: #e1e1e1c5;
+    margin-bottom: 20px;
+    padding: 0px;
+}
+
+#effects ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0px;
+}
+
+#effects li {
+    padding: 0px;
+    margin: 0px;
+    opacity: 1;
+    height: 45px;
+
+}
+
+#effects input[type="checkbox"] {
+    display: none;
+    /* Hide the actual checkbox */
+}
+
+#effects input[type="checkbox"]+label {
+    display: block;
+    padding: 0px;
+    cursor: pointer;
+    height: 45px;
+    line-height: 45px;
+    text-indent: 40px;
+    background-image: url(unchecked.png);
+    background-size: 20px 20px;
+    background-position: 12px center;
+    background-repeat: no-repeat;
+    color: rgb(68, 68, 68);
+}
+
+#effects input[type="checkbox"]:checked+label {
+    background-color: #1e5785;
+    color: #e1e6e6;
+    /* Light green background when checked */
+    background-image: url(checked.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 12px center;
+    background-repeat: no-repeat;
+}
+
+#effects input[type="checkbox"]:checked+label~* {
+    background-color: #a1abab;
+    /* Light green background for the entire li */
+
+
+}
+
+#elements ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    background-color: #b9c1c100;;
+}
+
+#elements li {
+    padding: 0px;
+    margin: 0px;
+    opacity: 1;
+    display: inline-block;
+    grid-column: 1fr;
+
+}
+
+#elements input[type="radio"] {
+    display: none;
+    /* Hide the actual radio */
+}
+
+#elements input[type="radio"]+label {
+    display: block;
+    padding: 0px;
+    cursor: pointer;
+    width: 100%;
+    aspect-ratio: 3/3;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: rgb(68, 68, 68);
+    background-color: #1e578500;
+}
+#elements input[type="radio"]:checked+label {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;  
+    background-color: #1e5785;
+}
+#elements input[type="radio"]+label.allelements {
+    background-image: url(Images/Gui/mountall.png);
+}
+#elements input[type="radio"]+label.allelements:hover {
+    background-image: url(Images/Gui/mountall-active.png);
+}
+
+#elements input[type="radio"]:checked+label.allelements {
+    background-image: url(Images/Gui/mountall-white.png);
+}
+
+#elements input[type="radio"]+label.Fire {
+    background-image: url(Images/Gui/mountfire.png);
+}
+
+#elements input[type="radio"]+label.Fire:hover {
+    background-image: url(Images/Gui/mountfire-active.png);
+}
+
+#elements input[type="radio"]:checked+label.Fire {
+    background-image: url(Images/Gui/mountfire-white.png);
+}
+#elements input[type="radio"]+label.Light {
+    background-image: url(Images/Gui/mountlight.png);
+}
+
+#elements input[type="radio"]+label.Light:hover {
+    background-image: url(Images/Gui/mountlight-active.png);
+}
+
+#elements input[type="radio"]:checked+label.Light {
+    background-image: url(Images/Gui/mountlight-white.png);
+}
+#elements input[type="radio"]+label.Life {
+    background-image: url(Images/Gui/mountlife.png);
+}
+#elements input[type="radio"]+label.Life:hover {
+    background-image: url(Images/Gui/mountlife-active.png);
+}
+
+#elements input[type="radio"]:checked+label.Life {
+    background-image: url(Images/Gui/mountlife-white.png);
+}
+#elements input[type="radio"]+label.Destruction {
+    background-image: url(Images/Gui/mountdestruction.png);
+}
+
+#elements input[type="radio"]+label.Destruction:hover {
+    background-image: url(Images/Gui/mountdestruction-active.png);
+}
+
+#elements input[type="radio"]:checked+label.Destruction {
+    background-image: url(Images/Gui/mountdestruction-white.png);
+}
+#elements input[type="radio"]+label.Darkness {
+    background-image: url(Images/Gui/mountdarkness.png);
+}
+#elements input[type="radio"]+label.Darkness:hover {
+    background-image: url(Images/Gui/mountdarkness-active.png);
+}
+
+#elements input[type="radio"]:checked+label.Darkness {
+    background-image: url(Images/Gui/mountdarkness-white.png);
+}
+
+#elements input[type="radio"]+label.Ice {
+    background-image: url(Images/Gui/mountice.png);
+}
+
+#elements input[type="radio"]+label.Ice:hover {
+    background-image: url(Images/Gui/mountice-active.png);
+}
+
+#elements input[type="radio"]:checked+label.Ice {
+    background-image: url(Images/Gui/mountice-white.png);
+}

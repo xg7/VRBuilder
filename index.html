@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>Viking Rise Troop Manager</title>
+    <meta name="description"
+        content="Plan and optimize your Viking Rise troop compositions with our simple troop manager and builder tool.">
+    <meta name="keywords"
+        content="Viking Rise, troop manager, army builder, strategy guide, troop composition, Viking Rise tips">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://troop-builder.free.nf/">
+    <meta property="og:title" content="Viking Rise Troop builder">
+    <meta property="og:description"
+        content="Plan and optimize your Viking Rise troop compositions with this simple builder tool. Share your builds!">
+    <meta property="og:image" content="https://troop-builder.free.nf/Images/misc/social-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://troop-builder.free.nf/">
+    <meta property="twitter:title" content="Viking Rise Troop builder">
+    <meta property="twitter:description"
+        content="Plan and optimize your Viking Rise troop compositions with this simple builder tool. Share your builds!">
+    <meta property="twitter:image" content="https://troop-builder.free.nf/Images/misc/social-preview.jpg">
+
+    <!-- Game Specific -->
+    <meta name="game:title" content="Viking Rise">
+    <meta name="game:developer" content="IGG">
+    <meta name="game:platform" content="Mobile, PC">
+    <meta name="robots" content="index, follow">
+
+    <link rel="icon" type="image/png" href="Images/misc/ico32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="Images/misc/ico16.png" sizes="16x16">
+    <link rel="preload" href="/Fonts/vr-Bold.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="main.css">
+    <link rel=" stylesheet" href="gui.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ulli.css">
+    <link rel="stylesheet" href="infodiv.css">
+    <link rel="stylesheet" href="calculator.css">
+</head>
+
+<body id="coordinates">
+
+    <div id="game-ui">
+
+        <div class="title">
+            <div class="logo"></div>
+            <div class="titletext">
+                <h5>Viking Rise</h5>
+                <h5 style="padding-left: 4px;">Troop Builder</h5>
+            </div>
+        </div>
+
+        <div class="troopside">
+            <div class="troopsideheader" id="troopsideheader">
+                <p id="troopcounter">0/5</p>
+            </div>
+            <div id="addTroops">
+            </div>
+        </div>
+
+        <div class="newtroops" id="newtroops">
+        </div>
+
+
+        <div class="window" id="HeroesAndSkills">
+            <div class="windowheader">
+                <h4>Hero and Skills</h4>
+            </div>
+            <div class="windowcontent">
+                <div class="window-menu" style="width: 24%;">
+                    <div class="window-head">
+                        <h4>Menu</h4>
+                    </div>
+                    <div class="window-content">
+                        <ul id="checkboxes"></ul>
+                    </div>
+                </div>
+                <div class="window-side" style="width: 38%;">
+                    <div class="window-head">
+                        <h4>Heroes</h4>
+                    </div>
+                    <div class="windowselect">
+                        <input type="text" id="heroSearch" placeholder="Enter hero name..." oninput="handleHeroSearch()"
+                            title="Search for Hero's name">
+                        <select name="sort" id="Herotype" title="Select Hero type">
+                            <option value="All">All</option>
+                            <option value="Infantry">Infantry</option>
+                            <option value="Pikeman">Pikeman</option>
+                            <option value="Archers">Archers</option>
+                            <option value="Leader">Leader</option>
+                        </select>
+                    </div>
+                    <div class="window-content" id="heroes">
+
+                    </div>
+
+                </div>
+                <div class="window-side" style="width: 38%;">
+                    <div class="window-head">
+                        <h4>Skills</h4>
+                    </div>
+                    <div class="windowselect">
+                        <input type="text" id="skillSearch" placeholder="Enter skill name..."
+                            oninput="handleSkillSearch()" title="Search for Skill name">
+                        <select name="sort" id="Skilltype" title="Select Skill type">
+                            <option value="All">All</option>
+                            <option value="Passive">Passive</option>
+                            <option value="Cooperation">Cooperation</option>
+                            <option value="Counterattack">Counterattack</option>
+                            <option value="Command">Command</option>
+                        </select>
+                    </div>
+                    <div class="window-content" id="skills">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="window" id="Equipment">
+            <div class="windowheader">
+                <h4>Equipment</h4>
+            </div>
+
+            <div class="windowcontent">
+                <div class="window-menu" style="width: 20%;">
+                    <div class="window-head">
+                        <h4>Menu</h4>
+                    </div>
+                    <div class="window-content">
+                        <ul>
+
+                            <li title="All Equipment"><input type="radio" id="all" value="all" name="equipment"
+                                    checked><label for="all" class="all">All Equipment</label></li>
+                            <li title="Basic Equipment"><input type="radio" id="basic" value="basic"
+                                    name="equipment"><label for="basic" class="basic">Basic Equipment</label></li>
+                            <li title="Monster Equipment"><input type="radio" id="monster" value="monster"
+                                    name="equipment"><label for="monster" class="monster">Monster Equipment</label></li>
+                            <li title="Blessed Equipment"><input type="radio" id="blessed" value="blessed"
+                                    name="equipment"><label for="blessed" class="blessed">Blessed Equipment</label></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="window-side" style="width: 53%;">
+                    <div class="window-head">
+                        <h4>Equipment</h4>
+                    </div>
+                    <div class="window-content" style="min-height: calc(100% - 22px);" id="newequipment">
+
+                    </div>
+                </div>
+                <div class="window-side" style="width: 27%;">
+                    <div class="window-head">
+                        <h4>Select</h4>
+                    </div>
+                    <div class="window-content"
+                        style="min-height: calc(100% - 5px); padding: 5px; margin-bottom: 20px;">
+                        <div class="ulheader">
+                            <h4>Equipment Slot</h4>
+                        </div>
+                        <div class="uldiv">
+                            <ul>
+
+                                <li class="weaponslot" title="All"><input type="radio" id="weaponall" value="all"
+                                        name="weapon" checked><label for="weaponall" class="weaponall"></label></li>
+                                <li class="weaponslot" title="Weapon"><input type="radio" id="weapon" value="weapon"
+                                        name="weapon"><label for="weapon" class="weapon"></label></li>
+                                <li class="weaponslot" title="Headgear"><input type="radio" id="headgear"
+                                        value="headgear" name="weapon"><label for="headgear" class="headgear"></label>
+                                </li>
+                                <li class="weaponslot" title="Top"><input type="radio" id="top" value="top"
+                                        name="weapon"><label for="top" class="top"></label></li>
+                                <li class="weaponslot" title="Bottom"><input type="radio" id="bottom" value="bottom"
+                                        name="weapon"><label for="bottom" class="bottom"></label></li>
+
+                            </ul>
+                        </div>
+
+                        <div class="ulheader">
+                            <h4>Grade</h4>
+                        </div>
+                        <div class="uldiv">
+                            <ul>
+
+                                <li class="grade" title="Commom"><input type="radio" id="common" value="common"
+                                        name="grade" checked><label for="common" class="common"></label></li>
+                                <li class="grade" title="Uncommon"><input type="radio" id="uncommon" value="uncommon"
+                                        name="grade"><label for="uncommon" class="uncommon"></label></li>
+                                <li class="grade" title="Rare"><input type="radio" id="rare" value="rare"
+                                        name="grade"><label for="rare" class="rare"></label></li>
+                                <li class="grade" title="Epic"><input type="radio" id="epic" value="epic"
+                                        name="grade"><label for="epic" class="epic"></label></li>
+                                <li class="grade" title="Legendary"><input type="radio" id="legendary" value="legendary"
+                                        name="grade"><label for="legendary" class="legendary"></label></li>
+
+                            </ul>
+                        </div>
+
+                        <div class="ulheader">
+                            <h4>Equipment Filter</h4>
+                        </div>
+                        <div class="uldiv" id="equipmentul">
+                            <ul>
+                                <p>Attack</p>
+                                <li class="effect"><input type="checkbox" id="BasicAttackDamageIncrease"
+                                        value="BasicAttackDamageIncrease"><label for="BasicAttackDamageIncrease"
+                                        class="effectlabel">Basic
+                                        Attack Damage Increase</label></li>
+                                <li class="effect"><input type="checkbox" id="CounterattackDamageIncrease"
+                                        value="CounterattackDamageIncrease"><label for="CounterattackDamageIncrease"
+                                        class="effectlabel">Counter Attack Damage Increase</label></li>
+                                <li class="effect"><input type="checkbox" id="PveDamageIncrease"
+                                        value="PveDamageIncrease"><label for="PveDamageIncrease" class="effectlabel">Pve
+                                        Damage Increase</label></li>
+                                <li class="effect"><input type="checkbox" id="DamageIncrease"
+                                        value="DamageIncrease"><label for="DamageIncrease" class="effectlabel">Increases
+                                        Damage</label></li>
+                                <p>Defense</p>
+                                <li class="effect"><input type="checkbox" id="DamageTakenReduction"
+                                        value="DamageTakenReduction"><label for="DamageTakenReduction"
+                                        class="effectlabel">Damage Taken Reduction</label></li>
+                                <p>Infantry</p>
+                                <li class="effect"><input type="checkbox" id="InfantryAttackIncrease"
+                                        value="InfantryAttackIncrease"><label for="InfantryAttackIncrease"
+                                        class="effectlabel">Infantry
+                                        Attack Increase</label></li>
+                                <li class="effect"><input type="checkbox" id="InfantryDefenseIncrease"
+                                        value="InfantryDefenseIncrease"><label for="InfantryDefenseIncrease"
+                                        class="effectlabel">Infantry
+                                        Defense Increase</label></li>
+                                <li class="effect"><input type="checkbox" id="InfantryHealthIncrease"
+                                        value="InfantryHealthIncrease"><label for="InfantryHealthIncrease"
+                                        class="effectlabel">Infantry
+                                        Health</label></li>
+                                <p>Pikemen</p>
+                                <li class="effect"><input type="checkbox" id="PikemenAttackIncrease"
+                                        value="PikemenAttackIncrease"><label for="PikemenAttackIncrease"
+                                        class="effectlabel">Pikemen Attack
+                                        Increase</label></li>
+                                <li class="effect"><input type="checkbox" id="PikemenDefenseIncrease"
+                                        value="PikemenDefenseIncrease"><label for="PikemenDefenseIncrease"
+                                        class="effectlabel">Pikemen
+                                        Defense Increase</label></li>
+                                <li class="effect"><input type="checkbox" id="PikemenHealthIncrease"
+                                        value="PikemenHealthIncrease"><label for="PikemenHealthIncrease"
+                                        class="effectlabel">Pikemen
+                                        Health</label></li>
+                                <p>Archers</p>
+                                <li class="effect"><input type="checkbox" id="ArcherAttackIncrease"
+                                        value="ArcherAttackIncrease"><label for="ArcherAttackIncrease"
+                                        class="effectlabel">Archer Attack Increase</label></li>
+                                <li class="effect"><input type="checkbox" id="ArcherDefenseIncrease"
+                                        value="ArcherDefenseIncrease"><label for="ArcherDefenseIncrease"
+                                        class="effectlabel">Archer Defense
+                                        Increase</label></li>
+                                <li class="effect"><input type="checkbox" id="ArcherHealthIncrease"
+                                        value="ArcherHealthIncrease"><label for="ArcherHealthIncrease"
+                                        class="effectlabel">Archer Health</label></li>
+                                <p>Porters</p>
+                                <li class="effect"><input type="checkbox" id="PorterAttackIncrease"
+                                        value="PorterAttackIncrease"><label for="PorterAttackIncrease"
+                                        class="effectlabel">Porter Attack Increase</label></li>
+                                <li class="effect"><input type="checkbox" id="PorterDefenseIncrease"
+                                        value="PorterDefenseIncrease"><label for="PorterDefenseIncrease"
+                                        class="effectlabel">Porter Defense
+                                        Increase</label></li>
+                                <li class="effect"><input type="checkbox" id="PorterHealthIncrease"
+                                        value="PorterHealthIncrease"><label for="PorterHealthIncrease"
+                                        class="effectlabel">Porter Health</label></li>
+                                <p>Speed</p>
+                                <li class="effect"><input type="checkbox" id="MarchSpeedIncrease"
+                                        value="MarchSpeedIncrease"><label for="MarchSpeedIncrease"
+                                        class="effectlabel">March Speed Increase</label></li>
+                                <p>Gathering</p>
+                                <li class="effect"><input type="checkbox" id="GatheringEfficiency"
+                                        value="GatheringEfficiency"><label for="GatheringEfficiency"
+                                        class="effectlabel">Gathering Efficiency</label></li>
+                                <p>Others</p>
+                                <li class="effect"><input type="checkbox" id="SquadLoad" value="SquadLoad"><label
+                                        for="SquadLoad" class="effectlabel">Squad Load</label></li>
+                                <li class="effect"><input type="checkbox" id="RallyCapacityIncrease"
+                                        value="RallyCapacityIncrease"><label for="RallyCapacityIncrease"
+                                        class="effectlabel">Increase
+                                        capacity of Rally Troops</label></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="window" id="Mount">
+            <div class="windowheader">
+                <h4>Mount Skills</h4>
+            </div>
+            <div class="windowcontent">
+                <div class="window-menu" style="width: 30%;">
+                    <div class="window-head">
+                        <h4>Menu</h4>
+                    </div>
+                    <div class="window-content">
+                        <div class="ulheader" style="margin-top: 0px;">
+                            <h4>Element</h4>
+                        </div>
+                        <div id="elements" class="elements">
+                            <ul>
+
+                                <li title="All Elements"><input type="radio" id="allelements" value="all" name="element"
+                                        checked><label for="allelements" class="allelements"></label></li>
+                                <li title="Fire"><input type="radio" id="Fire" value="Fire" name="element"><label
+                                        for="Fire" class="Fire"></label></li>
+                                <li title="Light"><input type="radio" id="Light" value="Light" name="element"><label
+                                        for="Light" class="Light"></label></li>
+                                <li title="Life"><input type="radio" id="Life" value="Life" name="element"><label
+                                        for="Life" class="Life"></label></li>
+                                <li title="Darkness"><input type="radio" id="Darkness" value="Darkness"
+                                        name="element"><label for="Darkness" class="Darkness"></label></li>
+                                <li title="Destruction"><input type="radio" id="Destruction" value="Destruction"
+                                        name="element"><label for="Destruction" class="Destruction"></label></li>
+                                <li title="Ice"><input type="radio" id="Ice" value="Ice" name="element"><label for="Ice"
+                                        class="Ice"></label></li>
+                            </ul>
+                        </div>
+                        <div class="ulheader" style="margin-top: 0px;">
+                            <h4>Effects</h4>
+                        </div>
+                        <div id="effects" class="effects">
+                            <ul id="Mountcheckboxes">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="window-side" style="width: 35%;">
+                    <div class="window-head">
+                        <h4>Skilll Slot One</h4>
+                    </div>
+                    <div class="windowselect">
+                        <input type="text" id="SkillSearchOne" placeholder="Enter Skill name"
+                            title="Search for Skill Name for slot 1">
+                        <select id="SkillSlotOneType" title="Select Skill type">
+                            <option value="All">All</option>
+                            <option value="Cooperation">Cooperation</option>
+                            <option value="Counterattack">Counterattack</option>
+                            <option value="Command">Command</option>
+                        </select>
+                    </div>
+                    <div class="window-content" id="SkillOnehtml">
+                    </div>
+                </div>
+                <div class="window-side" style="width: 35%;">
+                    <div class="window-head">
+                        <h4>Skill Slot Two</h4>
+                    </div>
+                    <div class="windowselect">
+                        <input type="text" id="SkillSearchTwo" placeholder="Enter skill name..."
+                            title="Search for Skill Name for slot 2">
+                        <select id="SkillSlotTwoType" title="Select Skill type">
+                            <option value="All">All</option>
+                            <option value="Cooperation">Cooperation</option>
+                            <option value="Counterattack">Counterattack</option>
+                            <option value="Command">Command</option>
+                        </select>
+                    </div>
+                    <div class="window-content" id="SkillTwohtml">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window" id="Overview">
+            <div class="windowheader">
+                <h4>Squad Overview</h4>
+            </div>
+            <div class="windowcontent">
+                <div class="window-side" style="width: 100%;">
+                    <div class="window-content" style="height: 100%; position: relative;">
+                        <div class="screenshot" onclick="selectWindow('Screenshot')"><img src="Images/Gui/screen.png"
+                                title="Click for easyview for screenshots" alt="Screenshot"></div>
+                        <div class="overviewtroops" id="OverviewHtml">
+                            <div class="overviewtroop" id="overviewtroop1"></div>
+                            <div class="summarytroop" id="summarytroop1"></div>
+                            <div class="overviewtroop" id="overviewtroop2"></div>
+                            <div class="summarytroop" id="summarytroop2"></div>
+                            <div class="overviewtroop" id="overviewtroop3"></div>
+                            <div class="summarytroop" id="summarytroop3"></div>
+                            <div class="overviewtroop" id="overviewtroop4"></div>
+                            <div class="summarytroop" id="summarytroop4"></div>
+                            <div class="overviewtroop" id="overviewtroop5"></div>
+                            <div class="summarytroop" id="summarytroop5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="window" id="Screenshot" style="width: 100%; height: 100%; bottom: 0px; left: 0px; z-index: 3000;">
+            <div class="windowheader" style="position: relative;">
+                <h4>Squad Overview</h4>
+                <h2 style="display: inline; position: absolute; right: 10px; cursor: pointer;"
+                    onclick="selectWindow('Overview')">X</h2>
+            </div>
+            <div class="windowcontent">
+                <div class="window-side" style="width: 100%;">
+                    <div class="window-content" style="height: 100%;" id="ScreenshotHtml">
+
+                        <div class="herocardviewcontainer">
+                            <div class="herocardview">
+                                <div class="herocardviewimage"><img src="Images/Heroes/Gunnar.png" alt="Gunnar">
+                                    <h3>Aethelflaed</h3>
+                                </div>
+                                <div class="herocardviewinfo">
+                                    <div class="herocardviewslots">
+                                        <div class="skilloneimage"><img
+                                                src="Images/Skills/Small/Blessed-by-Fate-small.png" alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="skilltwoimage"><img
+                                                src="Images/Skills/Small/Berserk-Killing-Machine-small.png"
+                                                alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilloneimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilltwoimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="herocardview">
+                                <div class="herocardviewimage"><img src="Images/Heroes/Gunnar.png" alt="Gunnar">
+                                    <h3>Gunnar</h3>
+                                </div>
+                                <div class="herocardviewinfo">
+                                    <div class="herocardviewslots">
+                                        <div class="skilloneimage"><img
+                                                src="Images/Skills/Small/Blessed-by-Fate-small.png" alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="skilltwoimage"><img
+                                                src="Images/Skills/Small/Berserk-Killing-Machine-small.png"
+                                                alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilloneimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilltwoimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="herocardviewcontainer">
+                            <div class="herocardview">
+                                <div class="herocardviewimage"><img src="Images/Heroes/Gunnar.png" alt="Gunnar">
+                                    <h3>Gunnar</h3>
+                                </div>
+                                <div class="herocardviewinfo">
+                                    <div class="herocardviewslots">
+                                        <div class="skilloneimage"><img
+                                                src="Images/Skills/Small/Blessed-by-Fate-small.png" alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="skilltwoimage"><img
+                                                src="Images/Skills/Small/Berserk-Killing-Machine-small.png"
+                                                alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilloneimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilltwoimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="herocardview">
+                                <div class="herocardviewimage"><img src="Images/Heroes/Gunnar.png" alt="Gunnar">
+                                    <h3>Gunnar</h3>
+                                </div>
+                                <div class="herocardviewinfo">
+                                    <div class="herocardviewslots">
+                                        <div class="skilloneimage"><img
+                                                src="Images/Skills/Small/Blessed-by-Fate-small.png" alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="skilltwoimage"><img
+                                                src="Images/Skills/Small/Berserk-Killing-Machine-small.png"
+                                                alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilloneimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilltwoimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="herocardviewcontainer">
+                            <div class="herocardview">
+                                <div class="herocardviewimage"><img src="Images/Heroes/Gunnar.png" alt="Gunnar">
+                                    <h3>Gunnar</h3>
+                                </div>
+                                <div class="herocardviewinfo">
+                                    <div class="herocardviewslots">
+                                        <div class="skilloneimage"><img
+                                                src="Images/Skills/Small/Blessed-by-Fate-small.png" alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="skilltwoimage"><img
+                                                src="Images/Skills/Small/Berserk-Killing-Machine-small.png"
+                                                alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilloneimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilltwoimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="herocardview">
+                                <div class="herocardviewimage"><img src="Images/Heroes/Gunnar.png" alt="Gunnar">
+                                    <h3>Gunnar</h3>
+                                </div>
+                                <div class="herocardviewinfo">
+                                    <div class="herocardviewslots">
+                                        <div class="skilloneimage"><img
+                                                src="Images/Skills/Small/Blessed-by-Fate-small.png" alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="skilltwoimage"><img
+                                                src="Images/Skills/Small/Berserk-Killing-Machine-small.png"
+                                                alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilloneimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilltwoimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="herocardviewcontainer">
+                            <div class="herocardview">
+                                <div class="herocardviewimage"><img src="Images/Heroes/Gunnar.png" alt="Gunnar">
+                                    <h3>Gunnar</h3>
+                                </div>
+                                <div class="herocardviewinfo">
+                                    <div class="herocardviewslots">
+                                        <div class="skilloneimage"><img
+                                                src="Images/Skills/Small/Blessed-by-Fate-small.png" alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="skilltwoimage"><img
+                                                src="Images/Skills/Small/Berserk-Killing-Machine-small.png"
+                                                alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilloneimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilltwoimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="herocardview">
+                                <div class="herocardviewimage"><img src="Images/Heroes/Gunnar.png" alt="Gunnar">
+                                    <h3>Gunnar</h3>
+                                </div>
+                                <div class="herocardviewinfo">
+                                    <div class="herocardviewslots">
+                                        <div class="skilloneimage"><img
+                                                src="Images/Skills/Small/Blessed-by-Fate-small.png" alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilloneimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilltwoimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="herocardviewcontainer">
+                            <div class="herocardview">
+                                <div class="herocardviewimage"><img src="Images/Heroes/Gunnar.png" alt="Gunnar">
+                                    <h3>Gunnar</h3>
+                                </div>
+                                <div class="herocardviewinfo">
+                                    <div class="herocardviewslots">
+                                        <div class="skilloneimage"><img
+                                                src="Images/Skills/Small/Blessed-by-Fate-small.png" alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="skilltwoimage"><img
+                                                src="Images/Skills/Small/Berserk-Killing-Machine-small.png"
+                                                alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="herocardview">
+                                <div class="herocardviewimage"><img src="Images/Heroes/Gunnar.png" alt="Gunnar">
+                                    <h3>Gunnar</h3>
+                                </div>
+                                <div class="herocardviewinfo">
+                                    <div class="herocardviewslots">
+                                        <div class="skilloneimage"><img
+                                                src="Images/Skills/Small/Blessed-by-Fate-small.png" alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="skilltwoimage"><img
+                                                src="Images/Skills/Small/Berserk-Killing-Machine-small.png"
+                                                alt="Gunnar">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                        <div class="mountskilloneimage"><img
+                                                src="Images/Skills/Mountskills/Abyssal-Maw-small.png" alt="">
+                                            <p>Furious Hack and Slash</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="window" id="Links">
+            <div class="windowheader">
+                <h4>Information</h4>
+            </div>
+            <div class="windowcontent">
+                <div class="window-menu" style="width: 25%;">
+                    <div class="window-head">
+                        <h4>Links</h4>
+                    </div>
+                    <div class="window-content">
+                        <div class="ulheader" style="margin-top: 0px;">
+                            <h4>General information</h4>
+                        </div>
+                        <div class="links welcome">
+                            <a onmouseover="ScrollTo('welcome')">Welcome</a>
+                        </div>
+
+                        <div class="ulheader" style="margin-top: 0px;">
+                            <h4>Dark</h4>
+                        </div>
+                        <div class="links">
+                            <a class="calc"
+                                href="https://docs.google.com/spreadsheets/d/1K58qtLoV3qQs6SRVvbTYkXMHe9huhFVeghFTwJ4SCB8/edit?usp=sharing"
+                                target="_blank" onmouseover="ScrollTo('darkdogcalc')">Dark's Calculator</a>
+                        </div>
+
+                        <div class="ulheader" style="margin-top: 0px;">
+                            <h4>Discord</h4>
+                        </div>
+                        <div class="links discord">
+                            <a href="https://discord.gg/sqXqTBSv3w" target="_blank"
+                                onmouseover="ScrollTo('vikingrisediscord')">Viking
+                                Rise Official Discord</a>
+                            <a href="https://discord.com/channels/989102955569483796/1157314461657464915"
+                                target="_blank" onmouseover="ScrollTo('pvpguide')">Dark Dog's
+                                PVP Guide</a>
+                            <a href="https://discord.com/channels/989102955569483796/1338839856842936320"
+                                target="_blank" onmouseover="ScrollTo('bloodcrowmountskill')">Bloodcrow's
+                                Mount Skill Upgrading</a>
+                            <a href="https://discord.com/channels/989102955569483796/1257628694189445140"
+                                target="_blank" onmouseover="ScrollTo('piedpiper')">Pied Piper's
+                                Equipment for Heroes</a>
+                            <a href="https://discord.com/channels/989102955569483796/1305434724923215954"
+                                target="_blank" onmouseover="ScrollTo('gatetrekker')">Gatetrekker's Hero-Gatherers
+                                Guide</a>
+                            <a href="https://discord.com/invite/BjEJR3NYTn" target="_blank"
+                                onmouseover="ScrollTo('p1ercediscord')">P1erce's Official Discord</a>
+                            <a href="" target="_blank" style="pointer-events: none;">Parabellum International (no
+                                link yet).</a>
+                        </div>
+
+                        <div class="ulheader" style="margin-top: 0px;">
+                            <h4>Youtube</h4>
+                        </div>
+                        <div class="links youtube">
+                            <a href="https://www.youtube.com/@bloodleshen1989" target="_blank"
+                                onmouseover="ScrollTo('bloodcrowyoutube')">BloodCrow's channel</a>
+                            <a href="https://www.youtube.com/@P1erceGaming" target="_blank"
+                                onmouseover="ScrollTo('p1erceyoutube')">P1erce's channel</a>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="window-side" style="width: 75%;">
+                    <div class="window-head">
+                        <h4>Link Info</h4>
+                    </div>
+                    <div class="window-content" style="height: 100%;">
+                        <div class="linkscontentcontainer">
+                            <div class="linkscontent" id="welcome">
+                                <h2>Troop Builder - Customize and Share!</h2>
+                                <h3>Welcome to your troop-building companion!</h3>
+                                <p> Whether you're strategizing for battle or perfecting your heroes' loadouts, this
+                                    Troops Manager
+                                    gives you the option to: </p>
+                                <p>Organize Hero Builds </p>
+                                <p>Add heroes, skills, equipment, and mount skills to create the ultimate troop
+                                    setups. </p>
+                                <p>Mix and match up to 5 troops per build for maximum flexibility. </p>
+
+                                <h3>Share Your Best Loadouts </h3>
+                                <p>Generate a unique shareable URL for each build, <strong>no login
+                                        required!</strong> </p>
+                                <p>Let friends and tribe mates copy your setups with a single click. </p>
+
+                                <p>Compare different skill and gear combinations. </p>
+
+                                <p>Plan your upgrades and look at heroes and skills that will become available for
+                                    newer servers. </p>
+
+                                <h3>Why Use This Tool?</h3>
+                                <p>Manage everything in one place. <br>
+                                    Instant Sharing - Copy, paste, and send your builds in seconds. <br>
+                                    Always Evolving - New features based on player feedback!</p>
+
+                                <h3>Perfect For:</h3>
+                                <p>Tribe leaders sharing meta builds with members. <br>
+                                    Casual gamers who love experimenting with different setups.</p>
+
+                                <h3>Further Develepment</h3>
+                                <p>I'm constantly thinking of ways to improve the troop building experience and
+                                    information that it can
+                                    give you. But suggestions are always welcome. Furthermore if you see hero skill
+                                    or talent
+                                    descriptions with ?? or ??? in it. It's because I don't have the full overview
+                                    of that particular
+                                    hero. So if you do have that hero maxed I'd appreciate it if you can provide me
+                                    with screenshots of
+                                    that hero's skills and talents.
+                                    You can find me in the official Viking Rise discord with the name Wimpo. Tag me
+                                    or send me a DM if you
+                                    like to help me out. Also if you like me to add a link to your youtube channel,
+                                    guide, etc..., send me
+                                    the link i'll add it to the list.
+                                </p>
+                            </div>
+
+                            <div class="linkscontent" id="darkdogcalc">
+                                <h2>Dark's Calculator</h2>
+                                <p><img src="Images/misc/darkdogcalc.png" style="width: 25%; float: right;" alt="">Dark
+                                    made a
+                                    calculator in google sheets to calculate troop damage output in different
+                                    situations. It's the best
+                                    method available to calculate the different outcomes. It's a bit of a learning
+                                    curve to get it
+                                    working, but the PVP thread in the official Viking Rise discord can help with
+                                    that. Also most of the
+                                    information that you need to use it is also included in the sheets itself.</p>
+                            </div>
+
+                            <div class="linkscontent" id="vikingrisediscord">
+                                <h2>Viking Rise Official Discord</h2>
+                                <p>Viking Rise's Official Discord with different language channels, information on
+                                    new upcoming events,
+                                    game updates, sections for guides, relevant game topics and of course memes.</p>
+                                <img src="Images/misc/vikingxvalhalla.png" alt="">
+                            </div>
+                            <div class="linkscontent" id="pvpguide">
+                                <h2>Dark's PVP Guide thread</h2>
+                                <p>Dark is like a math wizard. He made a google spreadsheet calculator which can be
+                                    used to make troop
+                                    builds like we can here.
+                                    Although his calculator is much more in depth with troop damage output etc...
+                                    This thread is made to
+                                    discuss troop formations, where his calculator can help a lot by showing the
+                                    output of those troops.
+                                    But not only Dark is helpfull in this thread, there are quite a few other
+                                    players that are willing to
+                                    give advise on troop builds.</p>
+                                <img src="Images/misc/darkdog.png" alt="">
+                            </div>
+                            <div class="linkscontent" id="bloodcrowmountskill">
+                                <h2>Bloodcrow's Mount skill upgrading thread</h2>
+                                <p>Bloodcrow is one of those players that is also really helpfull, he made a guide
+                                    about upgrading mount
+                                    skills that you should check out! He's also active in Dark's PVP Guide thread.
+                                    And check out his
+                                    Youtube channel, link is included on the left under youtube (scroll down).</p>
+                                <img src="Images/misc/bloodcrowthread2.png" style="width: 80%;">
+                            </div>
+                            <div class="linkscontent" id="piedpiper">
+                                <h2>Pied Piper's Equipment for Heroes</h2>
+                                <p> <img src="Images/misc/piedpiper.png" style="width: 30%; float: right;">Pied
+                                    Piper made some easy to
+                                    understand pictures of hero/equipment combo's and what you need to build the
+                                    equipment. Sadly he never
+                                    got to it to do infantry. And he seemingly quit playing before Blessed Equipment
+                                    was introduced.
+                                    Nonetheless it's still valid for what it offers, and worth checking out if you
+                                    play on a younger
+                                    server!</p>
+                            </div>
+                            <div class="linkscontent" id="gatetrekker">
+                                <h2>Gatetrekker's Hero-Gatherers Guide</h2>
+                                <p> <img src="Images/misc/Hero-Gatherers.png"
+                                        style="width: 30%; float: right;">Gatetrekker took the
+                                    time to make an easy to understand overview of gathering heroes, and what those
+                                    heroes are best used
+                                    for including the skills you should use for them.</p>
+                            </div>
+                            <div class="linkscontent" id="p1ercediscord">
+                                <h2>P1erce's Official Discord</h2>
+                                <p><img src="Images/misc/p1erce.jpg" style="width: 15%; float: right;" alt="">
+                                    P1erce is the king of
+                                    186, and a youtube streamer. His channel is worth checking out, but so is his
+                                    discord.</p>
+                            </div>
+                            <div class="linkscontent" id="bloodcrowyoutube">
+                                <h2>Bloodcrow's Youtube Channel</h2>
+                                <p><img src="Images/misc/bloodcrowyoutube.png" style="width: 25%; float: right;" alt="">
+                                    Bloodcrow's
+                                    Youtube channel has some nice video's of how to tackle some of the different
+                                    game modes in viking
+                                    rise. Like Hero Reclamation, Arena and Battle of the Ruins. There's also some
+                                    videos of Law of the
+                                    Jungle, a game mode no longer available in the game, but it can still be usefull
+                                    choosing skills for
+                                    your heroes.</p>
+
+                                <iframe width="560" height="315"
+                                    src="https://www.youtube.com/embed/hn0-RHGRkYk?si=a6wf9qC2bpSVCqSw"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                            </div>
+                            <div class="linkscontent" id="p1erceyoutube">
+                                <h2>P1erce's Youtube Channel</h2>
+                                <p><img src="Images/misc/p1erce.png" style="width: 25%; float: right;" alt="">
+                                    P1erce's (king of 186)
+                                    Youtube channel Has some nice troop building guides, interviews with other
+                                    players from the game and
+                                    live streams from time to time. An overall interesting channel and interesting
+                                    character to follow.
+                                </p>
+
+                                <iframe width="560" height="315"
+                                    src="https://www.youtube.com/embed/HKi52IMMcLM?si=K7xl4o2MEMSreVT5"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window" id="troop-calculator">
+            <div class="windowheader">
+                <h4>Calculator</h4>
+            </div>
+            <div class="windowcontent">
+                <div class="window-menu" style="width: 20%;">
+                    <div class="window-head">
+                        <h4>Menu</h4>
+                    </div>
+
+                    <div class="window-content">
+
+                        <div class="ulheader" style="margin-top: 0px;">
+                            <h4>Choose type:</h4>
+                        </div>
+                        <div class="trainlink">
+                            <div id="imageselect"><img src="Images/Gui/porter-icon.png" alt="Training Icon">
+                            </div>
+                            <select id="train-troop-type" title="Select troop type" onchange="selectTroopTypeToTrain()">
+                                <option value="porter">Porter</option>
+                                <option value="pikemen">Pikemen</option>
+                                <option value="infantry">Infantry</option>
+                                <option value="archer">Archer</option>
+                            </select>
+                            <img src="Images/Gui/i.png" alt="info"
+                                title="Rss costs and training time are the same for each type of troop.">
+                        </div>
+                        <div class="ulheader" style="margin-top: 0px;">
+                            <h4>Choose amount of troops:</h4>
+                        </div>
+                        <div class="trainlink">
+                            <img src="Images/Gui/min.png" alt="min" onclick="removeBuff(1000, 'troop-amount')"
+                                title="Remove 1000">
+                            <input type="number" id="troop-amount" value="1" title="Enter troop amount" min="0"
+                                max="1000000000" oninput="calculateTraining()">
+                            <img src="Images/Gui/plus.png" alt="plus" onclick="addBuff(1000, 'troop-amount')"
+                                title="Add 1000">
+                        </div>
+                        <div class="ulheader" style="margin-top: 0px;">
+                            <h4>Speedup buff in %:</h4>
+                        </div>
+                        <div class="trainlink">
+                            <img src="Images/Gui/min.png" alt="min" onclick="removeBuff(1, 'troop-train-buff')"
+                                title="Remove 1">
+                            <input type="number" id="troop-train-buff" value="0" title="Enter training buff" min="0"
+                                oninput="calculateTraining()">
+                            <img src="Images/Gui/plus.png" alt="plus" onclick="addBuff(1, 'troop-train-buff')"
+                                title="Add 1">
+                        </div>
+                        <div class="ulheader" style="margin-top: 0px;">
+                            <h4>RSS reduction in %:</h4>
+                        </div>
+                        <div class="trainlink">
+                            <img src="Images/Gui/min.png" alt="min" onclick="removeBuff(1, 'troop-train-rssbuff')"
+                                title="Remove 1">
+                            <input type="number" id="troop-train-rssbuff" value="0" title="Enter rss reduction buff"
+                                min="0" oninput="calculateTraining()">
+                            <img src="Images/Gui/plus.png" alt="plus" onclick="addBuff(1, 'troop-train-rssbuff')"
+                                title="Add 1">
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="window-side" style="width: 80%;">
+                    <div class="window-head">
+                        <h4></h4>
+                    </div>
+                    <div class="window-content" style="height: 100%;" id="calculatetype">
+                        <div class="traincontentcontainer">
+                            <div class="traincontent" id="traincontent">
+
+                                <div class="trooptypeinfocontainer">
+                                    <div class="trooptypeinfo" id="fromtroop">
+                                        <div class="trooptypeinfoheader">
+                                            <h4>From:</h4>
+                                        </div>
+                                        <select id="from-tier" title="Select troop tier"
+                                            onchange="changeTroopInfo('from')">
+                                            <option value="t0">New Training</option>
+                                            <option value="t1">T I</option>
+                                            <option value="t2">T II</option>
+                                            <option value="t3">T III</option>
+                                            <option value="t4">T IV</option>
+                                            <option value="t5">T V</option>
+                                            <option value="t6">T VI</option>
+                                        </select>
+                                        <h5>None</h5>
+                                        <div class="trooptypeinfotext" id="fromtrooptext">
+                                            <div class="infotextimg" id="fromtroopimg"><img src="Images/Gui/Grunts.png"
+                                                    alt="Training Icon"></div>
+                                            <div class="troopstats" id="fromtroopstats">
+                                                <div class="stat"><img src="Images/Gui/attack.png">
+                                                    <div>
+                                                        <p>Attack: 0</p>
+                                                    </div>
+                                                </div>
+                                                <div class="stat"><img src="Images/Gui/defense.png">
+                                                    <div>
+                                                        <p>Defense :0</p>
+                                                    </div>
+                                                </div>
+                                                <div class="stat"><img src="Images/Gui/health.png">
+                                                    <div>
+                                                        <p>Health: 0</p>
+                                                    </div>
+                                                </div>
+                                                <div class="stat"><img src="Images/Gui/marchspeed.png">
+                                                    <div>
+                                                        <p>Marchspeed: 0</p>
+                                                    </div>
+                                                </div>
+                                                <div class="stat"><img src="Images/Gui/might.png">
+                                                    <div>
+                                                        <p>Might: 0</p>
+                                                    </div>
+                                                </div>
+                                                <div class="stat"><img src="Images/Gui/load.png">
+                                                    <div>
+                                                        <p>Load: 0</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="rsscosts">
+                                            <div class="rsscost"><img src="Images/Gui/meat.png" alt="food" title="food">
+                                                <p id="food-cost-from">000</p>
+                                            </div>
+                                            <div class="rsscost"><img src="Images/Gui/wood.png" alt="wood" title="wood">
+                                                <p id="wood-cost-from">000</p>
+                                            </div>
+                                            <div class="rsscost"><img src="Images/Gui/stone.png" alt="stone"
+                                                    title="stone">
+                                                <p id="stone-cost-from">000</p>
+                                            </div>
+                                            <div class="rsscost"><img src="Images/Gui/gold.png" alt="gold" title="gold">
+                                                <p id="gold-cost-from">000</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <img src="Images/Gui/arrow-green.png" alt="arrow">
+
+                                    <div class="trooptypeinfo" id="totroop">
+                                        <div class="trooptypeinfoheader">
+                                            <h4>To:</h4>
+                                        </div>
+                                        <select id="to-tier" title="Select troop tier" onchange="changeTroopInfo('to')">
+                                            <option value="t1">T I</option>
+                                            <option value="t2">T II</option>
+                                            <option value="t3">T III</option>
+                                            <option value="t4">T IV</option>
+                                            <option value="t5">T V</option>
+                                            <option value="t6">T VI</option>
+                                            <option value="t7">T VII</option>
+                                        </select>
+                                        <h5>None</h5>
+                                        <div class="trooptypeinfotext" id="totrooptext">
+                                            <div class="infotextimg" id="totroopimg"><img src="Images/Gui/Grunts.png"
+                                                    alt="Training Icon"></div>
+                                            <div class="troopstats" id="totroopstats">
+                                                <div class="stat"><img src="Images/Gui/attack.png">
+                                                    <div>
+                                                        <p>Attack: 0</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="stat"><img src="Images/Gui/marchspeed.png">
+                                                    <div>
+                                                        <p>Marchspeed: 0</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="stat"><img src="Images/Gui/defense.png">
+                                                    <div>
+                                                        <p>Defense :0</p>
+                                                    </div>
+                                                </div>
+                                                <div class="stat"><img src="Images/Gui/might.png">
+                                                    <div>
+                                                        <p>Might: 0</p>
+                                                    </div>
+                                                </div>
+                                                <div class="stat"><img src="Images/Gui/health.png">
+                                                    <div>
+                                                        <p>Health: 0</p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="stat"><img src="Images/Gui/load.png">
+                                                    <div>
+                                                        <p>Load: 0</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="rsscosts">
+                                            <div class="rsscost"><img src="Images/Gui/meat.png" alt="food" title="food">
+                                                <p id="food-cost-to">000</p>
+                                            </div>
+                                            <div class="rsscost"><img src="Images/Gui/wood.png" alt="wood" title="wood">
+                                                <p id="wood-cost-to">000</p>
+                                            </div>
+                                            <div class="rsscost"><img src="Images/Gui/stone.png" alt="stone"
+                                                    title="stone">
+                                                <p id="stone-cost-to">000</p>
+                                            </div>
+                                            <div class="rsscost"><img src="Images/Gui/gold.png" alt="gold" title="gold">
+                                                <p id="gold-cost-to">000</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="train-results"></div>
+                                <div class="calculator-result">
+                                    <div class="rss">
+                                        <img src="Images/Gui/meat.png" alt="Meat">
+                                        <div class="meat-amount">
+                                            <p id="boosted-meat-amount" style="color: #fff; font-weight: bold;">0</p>
+                                            <p id="base-meat-amount"
+                                                style="text-decoration: line-through; color: #ff0000;"><span
+                                                    style="color: #fff;">0</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="rss">
+                                        <img src="Images/Gui/wood.png" alt="Wood">
+                                        <div class="wood-amount">
+                                            <p id="boosted-wood-amount" style="color: #fff; font-weight: bold;">0</p>
+                                            <p id="base-wood-amount"
+                                                style="text-decoration: line-through; color: #ff0000;"><span
+                                                    style="color: #fff;">0</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="rss">
+                                        <img src="Images/Gui/stone.png" alt="Stone">
+                                        <div class="stone-amount">
+                                            <p id="boosted-stone-amount" style="color: #fff; font-weight: bold;">0</p>
+                                            <p id="base-stone-amount"
+                                                style="text-decoration: line-through; color: #ff0000;"><span
+                                                    style="color: #fff;">0</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="rss">
+                                        <img src="Images/Gui/gold.png" alt="Gold">
+                                        <div class="gold-amount">
+                                            <p id="boosted-gold-amount" style="color: #fff; font-weight: bold;">0</p>
+                                            <p id="base-gold-amount"
+                                                style="text-decoration: line-through; color: #ff0000;"><span
+                                                    style="color: #fff;">0</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="calculator-result" style="font-size: 14px;">
+                                    <div id="train-time">
+
+                                    </div>
+                                    <div id="train-time-reduce">
+
+                                    </div>
+                                    <div id="train-time-buffed">
+
+                                    </div>
+
+                                    <div id="might-gain">
+
+                                    </div>
+
+                                </div>
+
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="window" id="Sharewindow"
+            style="width: 700px; height: fit-content; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            <div class="windowheader">
+                <h4>Share link</h4>
+            </div>
+            <div class="windowcontent">
+                <div class="window-side" style="width: 100%;">
+                    <div class="window-content"
+                        style="height: 100%; display: flex; flex-direction: column; gap: 10px; padding: 10px; justify-content: center; align-items: center;">
+                        <h2 style="color: #323232;">Share your build!</h2>
+                        <p style="color: #323232; text-align: center;">If you already generated a url and made
+                            adjustments to your
+                            build after doing so, click the red remove button and then get url again for a new url
+                            to share.</p>
+                        <div class="url"><input type="text" name="" id="shareurl" value="" readonly><img
+                                class="removeurl" src="Images/Gui/trash.png" alt="Delete" onclick="deleteUrl();">
+                        </div>
+                        <div class="buttona" title="Copy Url" onclick="copyToClipboard();">
+                            <div class="buttona-side-left blue"></div>
+                            <div class="buttona-center blue">
+                                <p>Get Url</p>
+                            </div>
+                            <div class="buttona-side-right blue"></div>
+                        </div>
+                        <p id="sharetext"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="share" onclick="selectWindow('Sharewindow')"></div>
+        <div class="infolinks" onclick="selectWindow('Links')"></div>
+        <div class="guimenu">
+            <div class="icon" id="selectHeroesAndSkillsWindow"><img src="Images/Gui/guiknothero.png">
+            </div>
+            <div class="icon" id="selectEquipmentWindow"><img src="Images/Gui/guiknotequipment.png"></div>
+            <div class="icon" id="selectMountWindow"><img src="Images/Gui/guiknotmount.png"></div>
+            <div class="icon" id="selectTrainWindow"><img src="Images/Gui/guiknottrain.png"></div>
+        </div>
+        <div class="log" id="log">
+            <p class="log-counter" id="logcounter">99+</p>
+            <div class="logcontent" id="logcontent"></div>
+        </div>
+
+        <img class="cloud cloud1" src="cloud.png" alt="Cloud 1">
+        <img class="cloud cloud2" src="cloud2.png" alt="Cloud 2">
+        <img class="cloud cloud3" src="cloud3.png" alt="Cloud 3">
+        <img class="cloud cloud4" src="fog.png" alt="Cloud 4">
+
+    </div>
+    <script src="data.js"></script>
+    <script src="javascript.js"></script>
+    <script src="heroes2.js"></script>
+    <script src="skills.js"></script>
+    <script src="heroesskillsandtalents.js"></script>
+    <script src="equipment.js"></script>
+    <script src="globals.js"></script>
+    <script src="heroandskillfunc.js"></script>
+    <script src="misc.js"></script>
+    <script src="equipmentfunc.js"></script>
+    <script src="mountskills.js"></script>
+    <script src="mountskillsfunc.js"></script>
+    <script src="troopfunc.js"></script>
+    <script src="trooptier.js"></script>
+    <script src="calculator.js"></script>
+
+    <script>
+
+        document.getElementById("selectHeroesAndSkillsWindow").addEventListener("click", () => selectWindow('HeroesAndSkills'));
+        document.getElementById("selectEquipmentWindow").addEventListener("click", () => selectWindow('Equipment'));
+        document.getElementById("selectMountWindow").addEventListener("click", () => selectWindow('Mount'));
+        document.getElementById("selectTrainWindow").addEventListener("click", () => selectWindow('troop-calculator'));
+
+
+        window.addEventListener('load', () => {
+            Showheroes(); // Refresh the heroes list
+            Showskills(); // Refresh the skills list
+            filterEquipment();
+            selectTroopTypeToTrain();
+        });
+
+        function ScrollTo(id) {
+            const div = document.getElementById(id);
+            const container = document.querySelector('.linkscontentcontainer');
+            const targetScroll = div.offsetLeft;
+            container.scrollTo({
+                top: 0,
+                left: targetScroll,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>
